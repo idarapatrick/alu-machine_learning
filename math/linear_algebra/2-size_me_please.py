@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
+import numpy as np
+
 def matrix_shape(matrix):
-    shape = []
-    while isinstance(matrix, list):
-        shape.append(len(matrix))
-        if len(matrix) == 0:
-            break
-        matrix = matrix[0]
-    return shape
+"""Function to return the shape of a matrix"""
+    matrix = np.array(matrix)
+    return list(matrix.shape)
 
+mat1 = [[1, 2], [3, 4]]
+print(matrix_shape(mat1))
 
-print(matrix_shape([[2, 3, 4], [4, 5, 6]]))
+mat2 = [[[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15]],
+        [[16, 17, 18, 19, 20], [21, 22, 23, 24, 25], [26, 27, 28, 29, 30]]]
+print(matrix_shape(mat2))
