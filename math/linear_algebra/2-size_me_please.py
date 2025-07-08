@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
-import numpy as np
+"""Module for calculating the shape of a matrix"""
 
 def matrix_shape(matrix):
-"""Function to return the shape of a matrix"""
-    matrix = np.array(matrix)
-    return list(matrix.shape)
+    """Calculates the shape of a matrix (nested lists).
 
-mat1 = [[1, 2], [3, 4]]
-print(matrix_shape(mat1))
+    Args:
+        matrix (list): A nested list representing the matrix.
 
-mat2 = [[[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15]],
-        [[16, 17, 18, 19, 20], [21, 22, 23, 24, 25], [26, 27, 28, 29, 30]]]
-print(matrix_shape(mat2))
+    Returns:
+        list: The shape of the matrix as a list of integers.
+    """
+    shape = []
+    while isinstance(matrix, list):
+        shape.append(len(matrix))
+        if len(matrix) == 0:
+            break
+        matrix = matrix[0]
+    return shape

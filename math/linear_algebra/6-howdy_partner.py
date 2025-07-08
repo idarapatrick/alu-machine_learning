@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
+"""Module for concatenating two arrays"""
+
 def cat_arrays(arr1, arr2):
+    """Concatenates two arrays.
+
+    Args:
+        arr1 (list of int/float): First array.
+        arr2 (list of int/float): Second array.
+
+    Returns:
+        list: New list containing elements from both arrays.
+    """
     return arr1 + arr2
 
 

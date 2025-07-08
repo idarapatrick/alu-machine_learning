@@ -1,22 +1,17 @@
 #!/usr/bin/env python3
-import numpy as np 
-
-import numpy as np
+"""Module for element-wise addition of two 2D matrices"""
 
 def add_matrices2D(mat1, mat2):
-    """function to add two matrices element-wise"""
+    """Adds two 2D matrices element-wise.
 
-    mat1 = np.array(mat1)
-    mat2 = np.array(mat2)
-    if mat1.shape != mat2.shape:
+    Args:
+        mat1 (list of lists): First 2D matrix.
+        mat2 (list of lists): Second 2D matrix.
+
+    Returns:
+        list of lists: New matrix with element-wise sums if shapes match, else None.
+    """
+    if len(mat1) != len(mat2) or len(mat1[0]) != len(mat2[0]):
         return None
-    return mat1 + mat2
-
-mat1 = [[1, 2], [3, 4]]
-mat2 = [[2, 4], [2, 5]]
-print(add_matrices2D(mat1, mat2))
-
-print(mat1)
-print(mat2)
-print(add_matrices2D(mat1, [[1, 2, 3], [4, 5, 6]]))
+    return [[mat1[i][j] + mat2[i][j] for j in range(len(mat1[0]))] for i in range(len(mat1))]
 
