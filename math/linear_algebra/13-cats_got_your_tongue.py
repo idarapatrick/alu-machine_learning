@@ -16,3 +16,4 @@ def np_cat(mat1, mat2, axis=0):
         numpy.ndarray: The concatenated array.
     """
     return np.concatenate((mat1, mat2), axis=axis)
+

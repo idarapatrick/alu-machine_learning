@@ -15,3 +15,4 @@ def np_matmul(mat1, mat2):
         numpy.ndarray: The result of matrix multiplication.
     """
     return np.matmul(mat1, mat2)
+

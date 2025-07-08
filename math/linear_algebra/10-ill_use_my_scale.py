@@ -12,3 +12,4 @@ def np_shape(matrix):
         tuple: The shape of the array as a tuple of integers.
     """
     return matrix.shape
+

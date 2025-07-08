@@ -12,3 +12,4 @@ def np_transpose(matrix):
         numpy.ndarray: The transposed array.
     """
     return matrix.T
+
