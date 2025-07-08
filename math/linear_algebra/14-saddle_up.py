@@ -3,6 +3,7 @@
 
 import numpy as np  # type: ignore
 
+
 def np_matmul(mat1, mat2):
     """Performs matrix multiplication of two numpy.ndarrays.
 

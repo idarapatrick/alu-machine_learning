@@ -3,6 +3,7 @@
 
 import numpy as np  # type: ignore
 
+
 def np_cat(mat1, mat2, axis=0):
     """Concatenates two numpy.ndarrays along a specific axis.
 
