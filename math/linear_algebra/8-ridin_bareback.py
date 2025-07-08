@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module for matrix multiplication"""
+"""Module for matrix multiplication."""
 
 def mat_mul(mat1, mat2):
     """Performs matrix multiplication of two 2D matrices.

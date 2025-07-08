@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Module for matrix multiplication using numpy"""
+"""Module for matrix multiplication using numpy."""
+
 import numpy as np  # type: ignore
 
 def np_matmul(mat1, mat2):

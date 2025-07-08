@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module for calculating the shape of a numpy.ndarray"""
+"""Module for calculating the shape of a numpy.ndarray."""
 
 def np_shape(matrix):
     """Calculates the shape of a numpy.ndarray.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module for element-wise addition of two 2D matrices"""
+"""Module for element-wise addition of two 2D matrices."""
 
 def add_matrices2D(mat1, mat2):
     """Adds two 2D matrices element-wise.

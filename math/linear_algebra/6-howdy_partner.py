@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module for concatenating two arrays"""
+"""Module for concatenating two arrays."""
 
 def cat_arrays(arr1, arr2):
     """Concatenates two arrays.

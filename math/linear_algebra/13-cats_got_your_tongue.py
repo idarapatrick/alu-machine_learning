@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Module for concatenating two numpy.ndarrays along a specific axis"""
+"""Module for concatenating two numpy.ndarrays along a specific axis."""
+
 import numpy as np  # type: ignore
 
 def np_cat(mat1, mat2, axis=0):
