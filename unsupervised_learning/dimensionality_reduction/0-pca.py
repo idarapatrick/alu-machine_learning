@@ -13,7 +13,7 @@ def pca(X, var=0.95):
     Returns:
         W: numpy.ndarray of shape (d, nd) containing the weights matrix
     """
-    _, s, Vt = np.linalg.svd(X)
+    u, s, Vt = np.linalg.svd(X)
     cumvar = np.cumsum(s ** 2) / np.sum(s ** 2)
-    nd = np.argmax(cumvar >= var) + 1
+    nd = np.searchsorted(cumvar, var) + 1
     return Vt[:nd].T
