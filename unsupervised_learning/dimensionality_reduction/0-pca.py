@@ -15,18 +15,17 @@ def pca(X, var=0.95):
         W: numpy.ndarray of shape (d, nd) that maintains var fraction of
            X's original variance, where nd is the new dimensionality
     """
-    # Compute covariance matrix (data already has mean 0)
-    # Cov = (1/n) * X^T @ X
-    n = X.shape[0]
-    cov_matrix = np.matmul(X.T, X) / n
-
-    # Compute eigenvalues and eigenvectors
-    eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
-
-    # Sort eigenvalues and eigenvectors in descending order
-    idx = eigenvalues.argsort()[::-1]
-    eigenvalues = eigenvalues[idx]
-    eigenvectors = eigenvectors[:, idx]
+    # Perform SVD on the data matrix
+    # For mean-centered data: X = U * S * V^T
+    # The columns of V are the principal components (eigenvectors of X^T X)
+    # The singular values S relate to eigenvalues: eigenvalue = (S^2) / n
+    U, S, Vt = np.linalg.svd(X, full_matrices=False)
+    
+    # V^T rows are the principal components, we need V columns
+    eigenvectors = Vt.T
+    
+    # Calculate eigenvalues from singular values
+    eigenvalues = (S ** 2) / X.shape[0]
 
     # Calculate cumulative variance ratio
     total_variance = np.sum(eigenvalues)
@@ -36,6 +35,7 @@ def pca(X, var=0.95):
     nd = np.argmax(cumulative_variance >= var) + 1
 
     # Return the top nd eigenvectors as weight matrix
-    W = eigenvectors[:, :nd]
+    # Ensure real values (SVD might return complex for numerical reasons)
+    W = eigenvectors[:, :nd].real
 
     return W

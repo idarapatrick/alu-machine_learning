@@ -18,20 +18,14 @@ def pca(X, ndim):
     # Center the data by subtracting the mean
     X_m = X - np.mean(X, axis=0)
 
-    # Compute the covariance matrix
-    # Cov = (1/n) * X_m^T @ X_m
-    n = X.shape[0]
-    cov_matrix = np.matmul(X_m.T, X_m) / n
-
-    # Compute eigenvalues and eigenvectors
-    eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
-
-    # Sort eigenvalues and eigenvectors in descending order
-    idx = eigenvalues.argsort()[::-1]
-    eigenvectors = eigenvectors[:, idx]
-
+    # Perform SVD on the centered data matrix
+    # X_m = U * S * V^T
+    # The columns of V are the principal components
+    U, S, Vt = np.linalg.svd(X_m, full_matrices=False)
+    
+    # V^T rows are the principal components, we need V columns
     # Select the top ndim eigenvectors as the weight matrix
-    W = eigenvectors[:, :ndim]
+    W = Vt.T[:, :ndim]
 
     # Transform the centered data
     T = np.matmul(X_m, W)
