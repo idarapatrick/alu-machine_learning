@@ -15,5 +15,5 @@ def pca(X, var=0.95):
     """
     u, s, Vt = np.linalg.svd(X)
     cumvar = np.cumsum(s ** 2) / np.sum(s ** 2)
-    nd = np.searchsorted(cumvar, var) + 1
+    nd = np.argmax(cumvar >= var) + 1
     return Vt[:nd].T
