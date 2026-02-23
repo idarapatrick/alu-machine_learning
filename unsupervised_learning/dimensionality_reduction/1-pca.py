@@ -22,7 +22,7 @@ def pca(X, ndim):
     # X_m = U * S * V^T
     # The columns of V are the principal components
     U, S, Vt = np.linalg.svd(X_m, full_matrices=False)
-    
+
     # V^T rows are the principal components, we need V columns
     # Select the top ndim eigenvectors as the weight matrix
     W = Vt.T[:, :ndim]
