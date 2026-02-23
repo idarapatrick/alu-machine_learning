@@ -17,4 +17,5 @@ def initialize(X, k):
         return None
     if not isinstance(k, int) or k <= 0:
         return None
-    return np.random.uniform(X.min(axis=0), X.max(axis=0), size=(k, X.shape[1]))
+    return np.random.uniform(X.min(axis=0), X.max(axis=0),
+                             size=(k, X.shape[1]))

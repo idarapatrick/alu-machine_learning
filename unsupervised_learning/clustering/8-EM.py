@@ -17,7 +17,7 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
         verbose: boolean, whether to print log likelihood info
 
     Returns:
-        pi, m, S, g, l or None, None, None, None, None on failure
+        pi, m, S, g, log_l or None, None, None, None, None on failure
     """
     if not isinstance(X, np.ndarray) or X.ndim != 2:
         return None, None, None, None, None
@@ -31,26 +31,26 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
         return None, None, None, None, None
 
     pi, m, S = initialize(X, k)
-    g, l = expectation(X, pi, m, S)
+    g, log_l = expectation(X, pi, m, S)
 
     if verbose:
-        print("Log Likelihood after 0 iterations: {}".format(round(l, 5)))
+        print("Log Likelihood after 0 iterations: {}".format(round(log_l, 5)))
 
     for i in range(1, iterations + 1):
         pi, m, S = maximization(X, g)
-        g, l_new = expectation(X, pi, m, S)
+        g, log_l_new = expectation(X, pi, m, S)
 
         if verbose and i % 10 == 0:
             print("Log Likelihood after {} iterations: {}".format(
-                i, round(l_new, 5)))
+                i, round(log_l_new, 5)))
 
-        if abs(l_new - l) <= tol:
-            l = l_new
+        if abs(log_l_new - log_l) <= tol:
+            log_l = log_l_new
             if verbose:
                 print("Log Likelihood after {} iterations: {}".format(
-                    i, round(l, 5)))
+                    i, round(log_l, 5)))
             break
 
-        l = l_new
+        log_l = log_l_new
 
-    return pi, m, S, g, l
+    return pi, m, S, g, log_l

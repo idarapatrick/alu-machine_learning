@@ -25,6 +25,8 @@ def maximization(X, g):
     k = g.shape[0]
     if g.shape[1] != n:
         return None, None, None
+    if not np.allclose(np.sum(g, axis=0), 1):
+        return None, None, None
 
     n_k = np.sum(g, axis=1)
     pi = n_k / n
