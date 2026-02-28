@@ -21,7 +21,8 @@ def absorbing(P):
             return False
 
         # Check if every state can reach an absorbing state
-        # Use reachability: expand set of states that can reach absorbing states
+        # Use reachability: expand set of states that can reach
+        # absorbing states
         reachable = absorbing_states.copy()
         changed = True
         while changed:

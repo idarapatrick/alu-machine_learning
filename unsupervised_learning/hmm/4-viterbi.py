@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Module to calculate the most likely sequence of hidden states for a hidden markov model."""
+"""Module to calculate the most likely sequence of hidden states
+for a hidden markov model."""
 
 import numpy as np
 
 
 def viterbi(Observation, Emission, Transition, Initial):
-    """Calculates the most likely sequence of hidden states for a hidden markov model."""
+    """Calculates the most likely sequence of hidden states for a
+    hidden markov model."""
     try:
         T = Observation.shape[0]
         N = Emission.shape[0]
